@@ -34,7 +34,7 @@ SoftAssert softAssert= new SoftAssert();
     public void registrationNegativeTest_WrongEmail(){
         int i= new Random().nextInt(1000);
         RegistrationBodyDto user = RegistrationBodyDto.builder()
-                .username("Modern"+i+"mail.com")
+                .username("Modern"+i+"mail.com") //@gmail.com; rtyuio@e; ppp@.com; qwerty@@rui.csd; rtyuio@e.; qwerty @gmail.com; qwerty@мама.com
                 .password("Asdfg1234!")
                 .firstName("Modern")
                 .lastName("Klon")
