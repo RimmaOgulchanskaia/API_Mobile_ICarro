@@ -18,8 +18,8 @@ public class RegistrationTests extends AppiumConfig {
         RegistrationBodyDto user= RegistrationBodyDto.builder()
                 .firstName("Rim")
                 .lastName("Og")
-                .username("Rimma12345@gmail.com")
-                .password("Rrrr@12345!")
+                .username("Rimma003@gmail.com")
+                .password("Rr12345!")
                 .build();
         System.out.println(user.toString());
         new SplashScreen(driver).goToSearchScreen(5);
@@ -55,5 +55,28 @@ public class RegistrationTests extends AppiumConfig {
         Assert.assertTrue(new ErrorScreen(driver)
                 .validateErrorMessage("username=must be a well-formed email address"));
     }
+
+    @Test
+    public void registrationNegativeTest_WithoutCheckBox(){
+        int i = new Random().nextInt(1000);
+        RegistrationBodyDto user= RegistrationBodyDto.builder()
+                .firstName(i+"Rim")
+                .lastName("Og")
+                .username("Rimma"+i+"@gmail.com")
+                .password("Rrrr@12345!")
+                .build();
+        System.out.println(user.toString());
+        new SplashScreen(driver).goToSearchScreen(5);
+        SearchScreen searchScreen= new SearchScreen(driver);
+        searchScreen.clickBtnDots();
+        searchScreen.clickBtnRegistration();
+        RegistrationScreen registrationScreen= new RegistrationScreen(driver);
+        registrationScreen.typeRegistraionForm(user);
+        registrationScreen.clickBtnYalla();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+
 
 }
