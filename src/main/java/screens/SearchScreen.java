@@ -24,6 +24,11 @@ public class SearchScreen extends BaseScreen{
     @FindBy(xpath = "//*[@text='My Cars' and @resource-id='com.telran.ilcarro:id/title']")
     AndroidElement btnMyCars;
 
+    @FindBy(xpath = "//*[@text='Logout' and @resource-id='com.telran.ilcarro:id/title']")
+    AndroidElement btnLogout;
+
+
+
 
     public void clickBtnMyCars(){
         clickWait(btnMyCars,3);
@@ -44,6 +49,14 @@ public class SearchScreen extends BaseScreen{
     }
     public void clickBtnLogin(){
         clickWait(btnLogin, 3);
+    }
+
+    public void clickBtnLogout(){
+        clickWait(btnLogout, 3);
+    }
+
+    public boolean isElementPresent_BtnLogin(String text){
+        return textInElementPresent(btnLogin, text, 5);
     }
 
 }

@@ -12,6 +12,8 @@ import java.net.URL;
 
 public class AppiumConfig {
     public static AppiumDriver<AndroidElement> driver;
+    public static int height=0;
+    public static int wedth=0;
 
 
     @BeforeMethod
@@ -31,6 +33,9 @@ public class AppiumConfig {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        height = driver.manage().window().getSize().getHeight();
+        wedth = driver.manage().window().getSize().getWidth();
+
     }
     @AfterClass
     public void tearDown(){
